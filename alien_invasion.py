@@ -1,5 +1,3 @@
-import time
-
 import pygame
 from pygame.sprite import Group
 
@@ -39,15 +37,16 @@ def run_game():
 
     # 开始游戏主循环
     while True:
-        gf.check_events(ai_settings, screen, ship, aliens, bullets, stats, play_button)
+        gf.check_events(ai_settings, screen, ship, aliens, bullets,
+            stats, sb, play_button)
 
         if stats.game_active:
             ship.update()
-            gf.update_bullets(ai_settings, screen, ship, bullets, aliens)
-            gf.update_aliens(ai_settings, screen, stats, ship, aliens, bullets)
+            gf.update_bullets(ai_settings, screen, stats, sb, ship, bullets, aliens)
+            gf.update_aliens(ai_settings, screen, stats, sb, ship, aliens, bullets)
 
         gf.update_screen(ai_settings, screen, ship, aliens, bullets, stats, sb, play_button)
-        time.sleep(0.01)
+        # time.sleep(0.01)
 
 
 if __name__ == '__main__':
